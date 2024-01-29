@@ -1,0 +1,9 @@
+# .gitignore file :
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.vscode/
+.idea/
+test.db
