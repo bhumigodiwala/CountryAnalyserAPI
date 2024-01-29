@@ -42,4 +42,6 @@ A FastAPI project that includes a Restful API to fetch countries from an externa
     ```
    This command starts the FastAPI server on `http://127.0.0.1:8000`.
 
+   Explore FastAPI with Swagger Documentation on `http://127.0.0.1:8000/docs`.
+
 **Note:** This README provides a basic setup guide. Additional setup and configuration might be needed depending on your environment and requirements.
