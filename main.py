@@ -68,3 +68,10 @@ def authenticate_user(username: str, password: str):
         return {"sub": db_user.username}  # Returning the username in the JWT payload
 
     return None
+
+# API Endpoints
+
+@app.get("/")
+def read_root():
+    res = "Welcome to Country Analyser API"
+    return res
