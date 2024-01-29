@@ -1,6 +1,9 @@
 fastapi 
 uvicorn 
+pyarrow
 sqlalchemy 
 databases 
 python-jose
 cryptography
+faker
+pandas
