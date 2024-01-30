@@ -7,3 +7,5 @@ python-jose
 cryptography
 faker
 pandas
+requests
+python-multipart
