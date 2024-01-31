@@ -43,3 +43,8 @@ async def signup(username: str = Form(...), password: str = Form(...), country: 
     db.close()
     return {"message": "User created successfully"}
 
+@app.get("/countries")
+async def get_countries():
+    response = requests.get("https://restcountries.com/v3.1/all")
+    countries = response.json()
+    return countries
