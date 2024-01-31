@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, Form, Request
 from fastapi.security import OAuth2PasswordBearer
-from app.controllers.controllers import authenticate_user, create_token, verify_token, get_user_by_username, get_current_user
-from app.models.models import SessionLocal, User
+from controllers.controllers import authenticate_user, create_token, verify_token, get_user_by_username, get_current_user
+from models.models import SessionLocal, User
 import requests
 
 app = FastAPI()
@@ -10,7 +10,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 @app.get("/")
 def read_root():
-    return {'Hello World'}
+    return ("Welcome to Country Analyser API!")
 
 @app.post("/token")
 async def login_for_access_token(username: str = Form(...), password: str = Form(...)):
