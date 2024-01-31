@@ -37,11 +37,19 @@ A FastAPI project that includes a Restful API to fetch countries from an externa
 ### Running Locally
 
 **Start FastAPI Server:**
+  Start FastAPI Server (Backend):
+  1. In one terminal run this command to start the server.
     ```bash
+    cd app
     uvicorn main:app --reload
     ```
-   This command starts the FastAPI server on `http://127.0.0.1:8000`.
+    This command starts the FastAPI server on `http://127.0.0.1:8000` and also creates the database.
 
-   Explore FastAPI with Swagger Documentation on `http://127.0.0.1:8000/docs`.
+  2. In another terminal run the below command to generate mock data entries in the database.
+    ```bash
+    cd app
+    python3 create_data.py
+    ```
+  Explore FastAPI with Swagger Documentation on `http://127.0.0.1:8000/docs`.
 
 **Note:** This README provides a basic setup guide. Additional setup and configuration might be needed depending on your environment and requirements.
