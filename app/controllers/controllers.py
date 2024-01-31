@@ -1,6 +1,6 @@
 from jose import JWTError, jwt
 from fastapi import HTTPException, Depends
-from app.models.models import SessionLocal, User
+from models.models import SessionLocal, User
 from fastapi.security import OAuth2PasswordBearer
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
