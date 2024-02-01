@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException, Form, Request
 from fastapi.security import OAuth2PasswordBearer
-from controllers.controllers import authenticate_user, create_token, verify_token, get_user_by_username, get_current_user
+from controllers.controllers import authenticate_user, create_token, get_user_by_username, get_current_user, get_country_currencies_from_api, analyze_market
 from models.models import SessionLocal, User
 import requests
 
@@ -48,3 +48,15 @@ async def get_countries():
     response = requests.get("https://restcountries.com/v3.1/all")
     countries = response.json()
     return countries
+
+@app.get("/ml-analysis")
+async def ml_analysis(current_user: dict = Depends(get_current_user)):
+    # Fetch user activities and country currencies
+    db = SessionLocal()
+    users = db.query(User).all()
+    user_activities = [user.website_activity for user in users]
+    country_currencies = get_country_currencies_from_api()
+    # Run ML analysis
+    suggestion = analyze_market(user_activities, country_currencies)
+
+    return {"message": "ML analysis result", "suggestion": suggestion}

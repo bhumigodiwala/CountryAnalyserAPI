@@ -13,3 +13,4 @@ class User(Base):
     username = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     country = Column(String)
+    website_activity = Column(String)

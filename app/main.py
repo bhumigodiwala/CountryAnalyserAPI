@@ -1,4 +1,3 @@
-# main.py
 import uvicorn
 from views.views import app
 from models.models import Base, engine
