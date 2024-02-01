@@ -3,6 +3,14 @@ from fastapi import HTTPException, Depends
 from models.models import SessionLocal, User
 from fastapi.security import OAuth2PasswordBearer
 
+from typing import List
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
+import requests
+import pandas as pd
+
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
 SECRET_KEY = 'P@ssW0rd'
@@ -38,3 +46,79 @@ def verify_token(token: str, credentials_exception):
         return payload
     except JWTError:
         raise credentials_exception
+
+def get_country_currencies_from_api():
+    # Fetch the countries data from the API
+    response = requests.get("https://restcountries.com/v3.1/all")
+    countries_data = response.json()
+    # Extract country names and currencies
+    countries = [country['name']['common'] for country in countries_data]
+    currencies = [get_currency_from_country(country) for country in countries_data]
+
+    # Return a list of tuples containing country and its currency
+    return list(zip(countries, currencies))
+
+def get_currency_from_country(country_data):
+    # Extract the currency information from the Rest Countries API response
+    curr = list(country_data.get("currencies", {}).keys())
+    currencies = list(set(curr))
+    # print(currencies)
+
+    if currencies and isinstance(currencies, list) and currencies[0]:
+        return currencies[0]
+
+    return "N/A"
+
+def open_branch(user_activity):
+    if user_activity == 'High': 
+        return 2
+    elif user_activity == 'Medium':
+        return 1
+    else:
+        return 0
+
+def analyze_market(user_activities: List[str], country_currencies: List[tuple]):
+    # Create a dataset for the ML algorithm
+    dataset = []
+    for user_activity, (country, currency) in zip(user_activities, country_currencies):
+        dataset.append({'user_activity': user_activity, 'country': country, 'currency': currency})
+
+    # Convert dataset to DataFrame
+    df = pd.DataFrame(dataset)
+
+    # Encode categorical features
+    label_encoder = LabelEncoder()
+    df['country_code'] = label_encoder.fit_transform(df['country'])
+    df['currency_code'] = label_encoder.fit_transform(df['currency'])
+    df['user_act_code'] = label_encoder.fit_transform(df['user_activity'])
+
+    df['y'] = df['user_activity'].apply(open_branch)
+
+    # Split dataset into features (X) and target (y)
+    X = df[['country_code','currency_code','user_act_code']]
+    y = df['y']
+
+    print(df)
+
+    # Split data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=40)
+
+    # Train a simple RandomForestClassifier
+    model = RandomForestClassifier()
+    model.fit(X_train, y_train)
+
+    # Make predictions on the test set
+    predictions = model.predict(X_test)
+
+    # Calculate accuracy
+    accuracy = accuracy_score(y_test, predictions)
+
+    # Based on the accuracy, provide a suggestion
+    if accuracy >= 0.8:
+        suggestion = "High user activity detected. Consider Expanding here!"
+    elif accuracy >= 0.5 and accuracy < 0.8:
+        suggestion = "Medium user activity detected. Consider expanding in next few years!"
+    else:
+        suggestion = "Low user activity. Do not expand here!"
+
+    return suggestion

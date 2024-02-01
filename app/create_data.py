@@ -1,4 +1,3 @@
-# create_data.py
 from sqlalchemy.orm import Session
 from faker import Faker
 from models.models import SessionLocal, User, Base, engine  # Update this line with the correct path
@@ -6,11 +5,12 @@ from models.models import SessionLocal, User, Base, engine  # Update this line w
 fake = Faker()
 
 def create_mock_user(db: Session):
-    for _ in range(10):
+    for _ in range(200):
         country = fake.country()
         username = fake.user_name()
         password = fake.password()
-        db_user = User(username=username, hashed_password=password, country=country)
+        website_activity = fake.random_element(["High","Medium","Low"])
+        db_user = User(username=username, hashed_password=password, country=country, website_activity=website_activity)
         db.add(db_user)
     db.commit()
 
