@@ -10,7 +10,6 @@ A FastAPI project that includes a Restful API to fetch countries from an externa
 
 ## Directory Structure
 
-# Project Structure
 ```bash
 
 CountryAnalyserAPI
