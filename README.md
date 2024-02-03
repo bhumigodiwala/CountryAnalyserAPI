@@ -11,25 +11,42 @@ A FastAPI project that includes a Restful API to fetch countries from an externa
 ## Directory Structure
 
 # Project Structure
+```bash
+
+CountryAnalyserAPI
+├── app
+│   ├── controllers
+│   │   └── controllers.py
+│   ├── models
+│   │   └── models.py
+│   └── views
+│      └── views.py
+|   ├── main.py
+│   ├── create_data.py
+│   ├── test.db
+├─  venv/
+├── README.md
+└── requirements.txt
+```
 
 | Directory/File              | Description                                                                 |
 |-----------------------------|-----------------------------------------------------------------------------|
 | **app/**                    | Core application directory.                                                 |
 |                             |                                                                             |
-| ├── **controllers/**        | Business logic modules.                                                     |
-| │   ├── **controllers.py**  | Main module for handling business logic.                                    |
+| **controllers/**            | Business logic modules.                                                     |
+| **controllers.py**          | Main module for handling business logic.                                    |
 |                             |                                                                             |
-| ├── **models/**             | Data model definitions.                                                     |
-| │   ├── **models.py**       | Central module defining data models.                                        |
+| **models/**                 | Data model definitions.                                                     |
+| **models.py**               | Central module defining data models.                                        |
 |                             |                                                                             |
-| ├── **views/**              | Manages HTTP requests and rendering views.                                  |
-| │   ├── **views.py**        | Main module responsible for handling views and request processing.          |
+| **views/**                  | Manages HTTP requests and rendering views.                                  |
+| **views.py**                | Main module responsible for handling views and request processing.          |
 |                             |                                                                             |
-| ├── **create_data.py**      | Script to generate and insert mock data into the database.                  |
+| **create_data.py**          | Script to generate and insert mock data into the database.                  |
 |                             |                                                                             |
-| ├── **main.py**             | Entry point for the application, handling initialization and setup.         |
+| **main.py**                 | Entry point for the application, handling initialization and setup.         |
 |                             |                                                                             |
-| ├── **test.db**             | SQLite database file for storing test data during development and testing.  |
+| **test.db**                 | SQLite database file for storing test data during development and testing.  |
 |                             |                                                                             |
 | **venv/**                   | Virtual environment directory.                                              |
 |                             |                                                                             |
@@ -71,17 +88,18 @@ A FastAPI project that includes a Restful API to fetch countries from an externa
 **Start FastAPI Server:**
   Start FastAPI Server (Backend):
   1. In one terminal run this command to start the server:
-    ```bash
-    cd app
-    uvicorn main:app --reload
-    ```
-    This command starts the FastAPI server on `http://127.0.0.1:8000` and also creates the database(test.db) in the app directory.
+     ```bash
+     cd app
+     uvicorn main:app --reload
+     ```
+     
+  This command starts the FastAPI server on `http://127.0.0.1:8000` and also creates the database(test.db) in the app directory.
 
   2. In another terminal run the below command to generate mock data entries in the database:
-    ```bash
-    cd app
-    python3 create_data.py
-    ```
+     ```bash
+     cd app
+     python3 create_data.py
+     ```
   Explore FastAPI with Swagger Documentation on `http://127.0.0.1:8000/docs`.
 
 **Note:** This README provides a basic setup guide. Additional setup and configuration might be needed depending on your environment and requirements.
