@@ -1,3 +1,4 @@
+# create_data.py -> Create mock user database
 from sqlalchemy.orm import Session
 from faker import Faker
 from models.models import SessionLocal, User, Base, engine  # Update this line with the correct path
