@@ -7,7 +7,8 @@ A FastAPI project that includes a Restful API to fetch countries from an externa
 - [Setup and Usage](#setup-and-usage)
   - [Setting Up Environments](#setting-up-environments)
   - [Running Locally](#running-locally)
-
+- [Results](#results)
+  
 ## Directory Structure
 
 ```bash
@@ -102,3 +103,31 @@ CountryAnalyserAPI
   Explore FastAPI with Swagger Documentation on `http://127.0.0.1:8000/docs`.
 
 **Note:** This README provides a basic setup guide. Additional setup and configuration might be needed depending on your environment and requirements.
+
+## Results
+
+### Database
+The database(test.db) in the SQLite DB viewer:
+
+<img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/39970ee9-3ec6-4c81-a8e4-43c3de4d9e53">
+
+### API Endpoints
+
+1. GET response (Default response)
+
+  <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/c0ee9a3f-ca20-4454-a384-49512bba3b31">
+
+2. Signup Endpoint
+
+  <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/9ada80b3-64f9-4874-96e1-bf4e11980727">
+
+3. Token Verification
+
+  <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/000a9330-41d1-4dbb-a2f9-0d894a28ec04">
+
+4. ML Algorithm Analysis
+  a. User Authorization
+
+      <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/207efc16-c9df-4c49-8a4f-24b343741ef2">
+
+  
