@@ -126,8 +126,14 @@ The database(test.db) in the SQLite DB viewer:
   <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/000a9330-41d1-4dbb-a2f9-0d894a28ec04">
 
 4. ML Algorithm Analysis
-  a. User Authorization
 
-      <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/207efc16-c9df-4c49-8a4f-24b343741ef2">
+a. User Authorization
+
+  <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/207efc16-c9df-4c49-8a4f-24b343741ef2">
+
+b. ML Analysis Result Suggestion      
+
+  <img align="center" width="600" alt="image" src="https://github.com/bhumigodiwala/CountryAnalyserAPI/assets/62346064/68e39ad9-ec36-42f2-8962-4416a36aeddb">
+
 
   
